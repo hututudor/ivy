@@ -147,7 +147,7 @@ Button.propTypes = {
 Button.defaultProps = {
   children: 'Button',
   size: 'medium',
-  rounded: true,
+  rounded: false,
   primary: false,
   secondary: false,
   negative: false,
