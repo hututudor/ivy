@@ -6,7 +6,7 @@ export default class App extends Component {
   render () {
     return (
       <div>
-        <Button size="big" negative>Name</Button>
+        <Button size="big" positive onClick={() => console.log('Clicked!')} disabled>Name</Button>
       </div>
     );
   }

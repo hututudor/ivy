@@ -65,15 +65,15 @@ const StyledButton = styled.button`
   ${props =>
     props.secondary &&
     css`
-      background: ${colors.grey_100};
+      background: ${colors.grey_200};
       color: ${colors.grey_700};
 
       &:hover {
-        background: ${colors.grey_200};
+        background: ${colors.grey_300};
         color: ${colors.grey_700};
       }
     `} 
-    
+  
   ${props =>
     props.negative &&
     css`
@@ -83,6 +83,30 @@ const StyledButton = styled.button`
       &:hover {
         background: ${colors.red_600};
         color: ${colors.grey_050};
+      }
+    `}
+    
+  ${props =>
+    props.positive &&
+    css`
+      background: ${colors.cyan_500};
+      color: ${colors.grey_050};
+
+      &:hover {
+        background: ${colors.cyan_600};
+        color: ${colors.grey_050};
+      }
+    `}  
+    
+  ${props =>
+    props.disabled &&
+    css`
+      background: ${colors.grey_100};
+      color: ${colors.grey_300};
+
+      &:hover {
+        background: ${colors.grey_100};
+        color: ${colors.grey_300};
       }
     `}
 `;
@@ -95,6 +119,11 @@ export default function Button(props) {
       primary={props.primary}
       secondary={props.secondary}
       negative={props.negative}
+      positive={props.positive}
+      disabled={props.disabled}
+      className={props.className}
+      style={props.style}
+      onClick={props.onClick}
     >
       {props.children}
     </StyledButton>
@@ -104,10 +133,15 @@ export default function Button(props) {
 Button.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   size: PropTypes.oneOf(['small', 'medium', 'big', 'huge']),
-  rounded: PropTypes.boolean,
-  primary: PropTypes.boolean,
-  secondary: PropTypes.boolean,
-  negative: PropTypes.boolean
+  rounded: PropTypes.bool,
+  primary: PropTypes.bool,
+  secondary: PropTypes.bool,
+  negative: PropTypes.bool,
+  positive: PropTypes.bool,
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
+  style: PropTypes.object,
+  onClick: PropTypes.func
 };
 
 Button.defaultProps = {
@@ -116,5 +150,10 @@ Button.defaultProps = {
   rounded: true,
   primary: false,
   secondary: false,
-  negative: false
+  negative: false,
+  positive: false,
+  disabled: false,
+  className: '',
+  style: {},
+  onClick: () => {}
 };
